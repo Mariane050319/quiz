@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Harry Potter</title>
+</head>
+<body>
+    <div class="quis-container">
+        <h1>Quiz de Perguntas e Respostas Harry Potter</h1>
+        <div id="pergunta"></div>
+        <div id="opcoes"></div>
+        <div id="resultado"></div>
+   </div>
+   <script>
+    const perguntas = [
+        {
+            pergunta: "Quem e a melhor amiga de Harry Potter?",
+            opcoes:["Luna", "Gina", "cho", "Hermione"],
+            resposta:"Hermione"
+        },
+        {
+            pergunta: "O filme Harry Potter e o Prisioneiro de Azkaban e qual filme na ordem?",
+            opcoes:["4", "5", "3", "7"],
+            resposta:"3"
+        },
+        {
+            pergunta:"Quem vai ser a espoja de Harry Potter",
+            opcoes:["Gina", "Hermione", "Fleur", "Luna"],
+            resposta:"Gina"
+        },
+        {
+            pergunta:"Em que ano Dolores Umbridge deu aula? ",
+            opcoes:["1", "3", "5","6"],
+            resposta:"5"
+        },
+        {
+            pergunta:"Quantos livros a saga Harry Potter tem?",
+            opcoes:["2","7", "8", "4"],
+            resposta:"8"
+        }
+        
+        
+    ];
+    const perguntaElemento = document.getElementById("pergunta");
+    const opcoesElemento = document.getElementById("opcoes");
+    const resultadoElemento = document.getElementById("resultado");
+
+    let indicePerguntaAtual = 0;
+    
+    function carregarPergunta() {
+        const perguntaAtual  = perguntas[indicePerguntaAtual];
+        perguntaElemento.textContent = perguntaAtual.pergunta;
+
+        opcoesElemento.innerHTML = "";
+        perguntaAtual.opcoes.forEach(opcao => {
+            const botao = document.createElement("button");
+            botao.textContent = opcao;
+            botao.addEventListener("click", () => verificarResposta(opcao));
+            opcoesElemento.appendChild(botao);
+        });
+    }
+    function verificarResposta(respostaSelecionada){
+        const perguntaAtual = perguntas[indicePerguntaAtual];
+        if (respostaSelecionada === perguntaAtual.resposta) {
+            resultadoElemento.textContent = "Resposta correta!";
+            resultadoElemento.className = "correto";
+        }else{
+            resultadoElemento.textContent = "Resposta incorreta. A resposta correta é:" + PerguntaAtual.resposta;
+            resultadoElemento.className = "incorreto";
+        }
+        //Avança para a próxima pergunta ou finalizar o quiz
+        indicePerguntaAtual++;
+        if (indicePerguntaAtual < perguntas.length){
+            setTimeout(carregarPergunta, 2000); //carrega próxima pergunta após 2 segundos
+        }
+        else{
+            resultadoElemento.textContent = "Quiz Concluido!";
+            resultadoElemento.className = "";
+        }
+    }
+    //carrrega a primeira pergunta quando a página carrega 
+    carregarPergunta();
+    </script>
+    <footer>Desenvolvido Por Mariane da Silva</footer>
+</body>
+</html>

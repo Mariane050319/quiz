@@ -1,0 +1,45 @@
+@charset "UTF-8";
+@font-face{
+    font-family:harryp ;
+    src: url(HARRYP__.TTF);
+}
+body{
+    font-family: harryp;
+    src: url(HARRYP__.TTF);
+    text-align: center;
+    background-color: rgb(71, 71, 157);
+}
+h1{
+    color: #51b3b3;
+    font-size: 40px;
+}
+.quis-container{
+    max-width:600px;
+    margin: 0 auto;
+}
+#pergunta{
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+#opcoes{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+button{
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+.correto{
+    background-color: #8BC34A;
+}
+.incorreto{
+    background-color: #ff5722;
+}
+footer{
+    color: #78caca;
+    font-size: 25px;
+}
